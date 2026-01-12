@@ -1,0 +1,5 @@
+.env
+venv
+handwriting_dataset
+heavy_handwriting_dataset
+.vscode
