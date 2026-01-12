@@ -49,6 +49,17 @@ signature_analysis_personality_report/
 - **Data Handling**: pandas, numpy, OpenCV / PIL
 - **Others**: sentence-transformers / HuggingFace embeddings, FAISS/Chroma vector store
 
+## 📁 Dataset Overview
+
+This dataset provides handwriting samples categorized according to the **Big Five personality traits** (also known as the OCEAN model). It is designed for research and development in personality detection through handwriting analysis.
+
+*   **Dataset Name**: Handwriting based personality detection
+*   **Provider**: Vuppala Adithya Sairam
+*   **Update Date**: Updated 2 years ago (from the source publication date of 2023-11-20)
+*   **Size**: Approximately 1.37 GB
+*   **Files**: 4,076 files in total
+*   **Download Link**: [Handwriting based personality detection on Kaggle](https://www.kaggle.com/datasets/vuppalaadithyasairam/handwriting-based-personality-detection)
+
 ## 🚀 Quick Start
 
 ### 1. Clone the repository
