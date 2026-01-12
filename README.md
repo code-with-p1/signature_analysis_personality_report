@@ -1,4 +1,3 @@
-```markdown
 # Signature Analysis Personality Report
 
 An end-to-end system that analyzes **handwritten signatures** using deep learning and generates detailed personality reports using **Retrieval-Augmented Generation (RAG)**.
@@ -142,4 +141,3 @@ MIT License (feel free to use, modify, and distribute — attribution appreciate
 ---
 
 Made with ❤️ for AI + Psychology enthusiasts
-```
