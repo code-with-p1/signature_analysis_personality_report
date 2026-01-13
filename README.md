@@ -20,13 +20,11 @@ signature_analysis_personality_report/
 ├── common/                    # Shared utility modules & helper functions
 │   └── (utils.py, config.py, rag_helper.py, etc.)
 ├── RAG_Documents/             # Knowledge base - Personality traits documentation
-│   ├── Extraversion.txt/pdf
-│   ├── Introversion.txt/pdf
-│   ├── Emotional_Stability.txt
-│   ├── Neuroticism.txt
-│   ├── Openness.txt
-│   ├── Conscientiousness.txt
-│   └── ... (other traits)
+│   ├── Agreeableness - PDF Information
+│   ├── Conscientiousness - PDF Information.pdf
+│   ├── Extraversion - PDF Information.pdf
+│   ├── Neuroticism - PDF Information.pdf
+│   └── Openness - PDF Information.pdf
 ├── .gradio/                   # Gradio cache (auto-generated - gitignored)
 ├── data_preparation.ipynb     # Data cleaning, augmentation, preprocessing pipeline
 ├── model_training.ipynb       # Model architecture, training & evaluation
