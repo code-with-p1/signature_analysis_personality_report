@@ -30,6 +30,13 @@ def fetch_vectorstore_retriever():
 
 def fetch_relevant_document(topic="None"):
     retriever = fetch_vectorstore_retriever()
-    docs = retriever.invoke(f"Explain Summary, Writing-style descriptions, Graphology-style Overall impression on given topic : {topic}")
+    query = (
+        f"Handwriting sample analysis for: {topic}\n"
+        "Extract and summarize: \n"
+        "- Observed writing style characteristics (slant, pressure, size, speed, spacing, margins, baseline, letter forms, connections, etc.)\n"
+        "- Graphological interpretations of personality traits linked to those features\n"
+        "- Overall psychological or personality impression"
+    )
+    docs = retriever.invoke(query)
     context = "\n\n".join(f"[Document {i+1}]\n{doc.page_content}\n" for i, doc in enumerate(docs))
     return context

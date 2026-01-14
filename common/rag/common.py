@@ -12,9 +12,22 @@ def generate_personality_summary(trait):
     if trait is None:
         return ""
 
-    system_message = """You are talented graphalogy expert who has PHD in it. You are best in reading and analysing the handwritting. You are a helpful assistant. Answer ONLY from the provided transcript context. If the context is insufficient, just say you don't know."""
+    system_message = """
+    You are a highly experienced professional graphologist with a PhD in Graphology and more than 20 years of practical experience in forensic and psychological handwriting analysis.
 
-    question = "Explain the detailed analysis on shared topic"
+    Your only task is to analyze handwriting features and give interpretations STRICTLY based on the information provided in the retrieved context/transcript.
+
+    Rules you must follow:
+    • Never use knowledge or assumptions from your training data
+    • Never invent or assume handwriting characteristics that are not explicitly described in the provided context
+    • If the context contains insufficient information for a meaningful analysis → answer only: "The provided context contains insufficient information for handwriting analysis"
+    • Use professional graphological terminology
+    • Structure your answer clearly: first describe observed features, then psychological/personality interpretation (if enough data)
+
+    Be objective, precise, and stay 100% within the provided context.
+    """
+
+    question = f"Analyze the handwriting features and personality traits of a person characterized as: {trait}, using ONLY the information present in the provided context."
 
     context = fetch_relevant_document(topic=trait)
 
