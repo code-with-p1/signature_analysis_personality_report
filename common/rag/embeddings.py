@@ -9,6 +9,27 @@ load_dotenv()
 
 
 def fetch_vectorstore_retriever():
+    """
+    Create and return a FAISS-based retriever for graphology/handwriting analysis documents.
+
+    This function:
+    - Loads sentence-transformers/all-MiniLM-L6-v2 embeddings (GPU if available)
+    - Builds a FAISS vector store from document chunks obtained via fetch_document_chunks()
+    - Returns a similarity search retriever configured to return top 10 most relevant chunks
+
+    Returns
+    -------
+    langchain_core.retrievers.BaseRetriever
+        Configured FAISS retriever ready to be used with .invoke() or .get_relevant_documents()
+
+    Notes
+    -----
+    - The vector store is **recreated from scratch every time** this function is called.
+    - This can be slow on first run or when document collection is large.
+    - Consider caching/persisting the vectorstore in production for better performance.
+    - Uses normalize_embeddings=True → cosine similarity is used internally.
+    """
+
     embeddings = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2",
         model_kwargs={'device': 'cuda' if torch.cuda.is_available() else 'cpu'},
@@ -29,6 +50,34 @@ def fetch_vectorstore_retriever():
 
 
 def fetch_relevant_document(topic="None"):
+    """
+    Retrieve relevant document chunks for graphological analysis of a specific topic/trait.
+
+    Constructs a detailed, structured query optimized for finding handwriting analysis content,
+    then retrieves the top 10 most similar document chunks from the FAISS vector store.
+
+    Parameters
+    ----------
+    topic : str, default="None"
+        Personality trait, psychological characteristic, writing style aspect or any topic
+        for which handwriting analysis information is requested.
+        Examples: "ambition", "emotional stability", "aggressiveness", "introversion"
+
+    Returns
+    -------
+    str
+        Concatenated string containing up to 10 relevant document chunks, each prefixed
+        with "[Document N]" for clear identification in the RAG context.
+        Returns empty context string if topic is "None" or no relevant chunks are found.
+
+    Notes
+    -----
+    - The query is intentionally very specific and structured to improve retrieval quality
+      for handwriting/graphology related content.
+    - Uses similarity (cosine) search with k=10 (top 10 results).
+    - The returned context is meant to be directly passed into a RAG prompt for LLM analysis.
+    """
+
     retriever = fetch_vectorstore_retriever()
     query = (
         f"Handwriting sample analysis for: {topic}\n"

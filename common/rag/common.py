@@ -6,9 +6,41 @@ from common.rag.models import load_huggingface_model
 
 def generate_personality_summary(trait):
     """
-    This is your RAG / LLM call.
-    Replace this with your actual implementation.
+    Generate a graphological personality summary for a given trait/topic using RAG.
+
+    This function performs a Retrieval-Augmented Generation (RAG) query to analyze
+    handwriting characteristics and derive corresponding personality traits/psychological
+    interpretations — but **only** from information explicitly present in retrieved documents.
+
+    Important:
+        The analysis is strictly limited to the content found in the vector store.
+        No external/pre-trained graphological knowledge is used by the LLM.
+
+    Parameters
+    ----------
+    trait : str or None
+        The personality trait, psychological characteristic, behavioral pattern or
+        topic for which handwriting analysis should be retrieved and interpreted.
+        Examples: "introversion", "high ambition", "emotional instability", "leadership"
+
+    Returns
+    -------
+    str
+        Graphological analysis containing:
+        - observed handwriting features (if any were found)
+        - their professional graphological interpretation
+        - overall personality impression
+        OR one of the following safety messages:
+        - "The provided context contains insufficient information for handwriting analysis"
+        - empty string (when trait is None)
+
+    Notes
+    -----
+    - The function is intentionally very strict about hallucination prevention.
+    - Quality of the result depends heavily on the relevance and richness of documents
+      stored in the vector database for the given trait.
     """
+
     if trait is None:
         return ""
 
