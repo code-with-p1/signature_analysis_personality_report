@@ -65,7 +65,6 @@ def generate_personality_summary(trait):
 
     model = load_huggingface_model()
 
-    # Create RAG prompt template
     rag_prompt = ChatPromptTemplate.from_messages([
         ("system", "{system_message}"),
         ("human", """Context information:\n\n{context}\n\nQuestion:\n\n{question}\n\nTopic:{topic}\n\nAnswer:""")
@@ -77,9 +76,8 @@ def generate_personality_summary(trait):
         | StrOutputParser()
     )
 
-    # Just invoke with dictionary of the three variables
     answer = simple_rag_chain.invoke({
-        "system_message": system_message, # or just pass topic and build inside
+        "system_message": system_message,
         "context": context,
         "question": question,
         "topic": trait
