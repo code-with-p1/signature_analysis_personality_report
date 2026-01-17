@@ -2,6 +2,8 @@
 
 An end-to-end system that analyzes **handwritten signatures** using deep learning and generates detailed personality reports using **Retrieval-Augmented Generation (RAG)**.
 
+![Signature Analysis Personality Report Demo](demo-screenshot.png)
+
 The project combines:
 - **Signature image classification** (deep learning model) to detect key handwriting features
 - **RAG pipeline** that uses detected traits + knowledge base documents about personality traits to generate natural-language personality analysis reports
