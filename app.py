@@ -1,4 +1,5 @@
 import os
+import tensorflow as tf
 os.environ.pop("TF_USE_LEGACY_KERAS", None)
 os.environ["TF_USE_LEGACY_KERAS"] = "1"
 
@@ -36,8 +37,7 @@ with col1:
     image = None
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
-        st.image(image, caption="Uploaded Handwriting Image", use_container_width=True)
-
+        st.image(image, caption="Uploaded Handwriting Image", width="stretch")
     analyze_btn = st.button("Analyze", type="primary")
 
 with col2:
