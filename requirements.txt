@@ -13,19 +13,16 @@ opencv-python==4.8.1.78
 pandas==2.3.3
 
 # =========================================================
-# TENSORFLOW (LEGACY SAFE — PLATFORM AWARE)
+# TENSORFLOW (SINGLE RUNTIME — REQUIRED)
 # =========================================================
-tensorflow==2.15.1 ; platform_system != "Windows"
-tensorflow-intel==2.15.1 ; platform_system == "Windows"
-
-tf-keras==2.15.1
+tensorflow==2.15.1
 ml-dtypes==0.3.1
 h5py==3.10.0
 protobuf==4.25.3
 tensorboard==2.15.2
 
 # =========================================================
-# TORCH (CPU ONLY — STABLE)
+# TORCH (CPU)
 # =========================================================
 torch==2.2.2
 torchvision==0.17.2
@@ -52,7 +49,7 @@ tiktoken==0.12.0
 huggingface-hub==0.36.0
 
 # =========================================================
-# LANGCHAIN STACK
+# LANGCHAIN
 # =========================================================
 langchain==1.2.3
 langchain-community==0.4.1

@@ -1,7 +1,7 @@
 import os
 import tensorflow as tf
-os.environ.pop("TF_USE_LEGACY_KERAS", None)
-os.environ["TF_USE_LEGACY_KERAS"] = "1"
+# os.environ.pop("TF_USE_LEGACY_KERAS", None)
+# os.environ["TF_USE_LEGACY_KERAS"] = "1"
 
 import streamlit as st
 from PIL import Image
